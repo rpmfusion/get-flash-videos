@@ -1,4 +1,4 @@
-%global         rel_tag   5.20120713git162d964
+%global         rel_tag   6.20120713git162d964
 Name:           get-flash-videos
 Version:        1.24
 Release:        %{?rel_tag}%{?dist}
@@ -75,6 +75,9 @@ make test
 
 
 %changelog
+* Fri Jul 13 2012 Alec Leamas <alec@nowhere.com> 1.24-6.20120713git162d964
+- Fixing build errors
+
 * Fri Jul 13 2012 Alec Leamas <alec@nowhere.com> 1.24-5.20120713git162d964
 - Updating to new git release
 
