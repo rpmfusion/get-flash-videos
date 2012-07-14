@@ -1,4 +1,4 @@
-%global         rel_tag   6.20120713git162d964
+%global         rel_tag   7.20120714git162d964
 Name:           get-flash-videos
 Version:        1.24
 Release:        %{?rel_tag}%{?dist}
@@ -7,7 +7,7 @@ Group:          Applications/Communications
                 # License breakdown in README.fedora
 License:        ASL 2.0 and GPLv3+
 URL:            http://code.google.com/p/get-flash-videos/
-# rel_tag=1.20120713git162d964;
+# rel_tag=1.20120714git162d964;
 # srcdir=get-flash-videos
 # git clone git://github.com/monsieurvideo/get-flash-videos.git $srcdir
 # cd $srcdir;  git reset --hard ${rel_tag##*git}; cd ..
@@ -75,6 +75,9 @@ make test
 
 
 %changelog
+* Sat Jul 14 2012 Alec Leamas <alec@nowhere.com> 1.24-7.20120714git162d964
+- Fixing build errors
+
 * Fri Jul 13 2012 Alec Leamas <alec@nowhere.com> 1.24-6.20120713git162d964
 - Fixing build errors
 
