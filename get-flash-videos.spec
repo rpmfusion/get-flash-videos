@@ -1,4 +1,4 @@
-%global         rel_tag   8.20121013gitc52cdf6
+%global         rel_tag   9.20121013gitc52cdf6
 Name:           get-flash-videos
 Version:        1.24
 Release:        %{?rel_tag}%{?dist}
