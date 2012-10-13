@@ -1,4 +1,4 @@
-%global         rel_tag   8.20120714git162d964
+%global         rel_tag   8.20121013gitc52cdf6
 Name:           get-flash-videos
 Version:        1.24
 Release:        %{?rel_tag}%{?dist}
@@ -58,6 +58,7 @@ rm t/google_video_search.t
 
 %install
 make pure_install DESTDIR=$RPM_BUILD_ROOT
+cp -a utils/ff-get-flash-video $RPM_BUILD_ROOT%{_bindir}
 find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} ';'
 find $RPM_BUILD_ROOT -depth -type d -exec rmdir {} 2>/dev/null ';'
 %{_fixperms} $RPM_BUILD_ROOT/*
@@ -71,18 +72,20 @@ make test
 %doc README README.fedora LICENSE
 %{perl_vendorlib}/*
 %{_bindir}/get_flash_videos
+%{_bindir}/ff-get-flash-video
 %{_mandir}/man1/*.1*
 
 
 %changelog
-* Sat Jul 14 2012 Alec Leamas <alec@nowhere.com> 1.24-8.20120714git162d964
-- Rebuilding (build errors)
+* Sat Oct 13 2012 Alec Leamas <alec@nowhere.com> 1.24-9.20120714gitc52cdf6
+- Updating to latest upstream
+- Handle new utility ff-get-flash-video
 
 * Sat Jul 14 2012 Alec Leamas <alec@nowhere.com> 1.24-7.20120714git162d964
-- Rebuilding (build errors)
+- Fixing build errors
 
 * Fri Jul 13 2012 Alec Leamas <alec@nowhere.com> 1.24-6.20120713git162d964
-- Fixing rpmfusion build error
+- Fixing build errors
 
 * Fri Jul 13 2012 Alec Leamas <alec@nowhere.com> 1.24-5.20120713git162d964
 - Updating to new git release
