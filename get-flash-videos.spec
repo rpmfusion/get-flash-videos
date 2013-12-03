@@ -1,7 +1,7 @@
-%global         rel_tag   9.20121013gitc52cdf6
+%global         rel_tag  20131203git2d46d08
 Name:           get-flash-videos
 Version:        1.24
-Release:        %{?rel_tag}%{?dist}
+Release:        10.%{?rel_tag}%{?dist}
 Summary:        CLI tool to download flash video from websites
 Group:          Applications/Communications
                 # License breakdown in README.fedora
@@ -12,7 +12,7 @@ URL:            http://code.google.com/p/get-flash-videos/
 # git clone git://github.com/monsieurvideo/get-flash-videos.git $srcdir
 # cd $srcdir;  git reset --hard ${rel_tag##*git}; cd ..
 # tar czf $srcdir-$rel_tag.tar.gz --exclude .git $srcdir
-Source0:        get-flash-videos-%{version}-%{rel_tag}.tar.gz
+Source0:        get-flash-videos-%{rel_tag}.tar.gz
 Source1:        README.fedora
 BuildArch:      noarch
 
@@ -77,6 +77,9 @@ make test
 
 
 %changelog
+* Tue Dec 03 2013 Alec Leamas <alec@nowhere.com> - 1.24-10.20131203git2d46d08
+- Updating to latest upstream
+
 * Sat Oct 13 2012 Alec Leamas <alec@nowhere.com> 1.24-9.20120714gitc52cdf6
 - Updating to latest upstream
 - Handle new utility ff-get-flash-video
