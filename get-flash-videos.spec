@@ -7,7 +7,7 @@ Group:          Applications/Communications
                 # License breakdown in README.fedora
 License:        ASL 2.0 and GPLv3+
 URL:            http://code.google.com/p/get-flash-videos/
-# rel_tag=1.20120714git162d964;
+# rel_tag=20120714git162d964;
 # srcdir=get-flash-videos
 # git clone git://github.com/monsieurvideo/get-flash-videos.git $srcdir
 # cd $srcdir;  git reset --hard ${rel_tag##*git}; cd ..
@@ -20,9 +20,12 @@ BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(Compress::Zlib)
 BuildRequires:  perl(Crypt::Rijndael)
 BuildRequires:  perl(XML::Parser::PerlSAX)
+BuildRequires:  perl(Module::Find)
 BuildRequires:  perl(LWP::UserAgent::Determined)
+BuildRequires:  perl(LWP::Protocol::https)
 Buildrequires:  perl(Test::Simple)
 BuildRequires:  perl(Tie::IxHash)
+BuildRequires:  perl(URI)
 BuildRequires:  perl(WWW::Mechanize)
 BuildRequires:  perl(XML::Simple)
 
@@ -30,10 +33,13 @@ Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $versi
 Requires:       perl(Compress::Zlib)
 Requires:       perl(Crypt::Rijndael)
 Requires:       perl(Data::AMF)
+Requires:       perl(Module::Find)
+Requires:       perl(LWP::Protocol::https)
 Requires:       perl(LWP::UserAgent::Determined)
 Requires:       perl(Tie::IxHash)
 Requires:       perl(XML::Simple)
 Requires:       rtmpdump
+
 
 %{?perl_default_filter}
 
@@ -79,6 +85,7 @@ make test
 %changelog
 * Tue Dec 03 2013 Alec Leamas <alec@nowhere.com> - 1.24-10.20131203git2d46d08
 - Updating to latest upstream
+- Add new Requires/BR:
 
 * Sat Oct 13 2012 Alec Leamas <alec@nowhere.com> 1.24-9.20120714gitc52cdf6
 - Updating to latest upstream
