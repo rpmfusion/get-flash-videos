@@ -1,7 +1,7 @@
 %global         rel_tag  20131203git2d46d08
 Name:           get-flash-videos
 Version:        1.24
-Release:        10.%{?rel_tag}%{?dist}
+Release:        11.%{?rel_tag}%{?dist}
 Summary:        CLI tool to download flash video from websites
 Group:          Applications/Communications
                 # License breakdown in README.fedora
@@ -83,6 +83,9 @@ make test
 
 
 %changelog
+* Fri Dec 27 2013 leamas@nowhere.net - 1.24-11.20131203git2d46d08
+- Rebuild after F20 branching
+
 * Tue Dec 03 2013 Alec Leamas <alec@nowhere.com> - 1.24-10.20131203git2d46d08
 - Updating to latest upstream
 - Add new Requires/BR:
