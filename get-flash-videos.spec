@@ -1,7 +1,7 @@
 %global         rel_tag  20131203git2d46d08
 Name:           get-flash-videos
 Version:        1.24
-Release:        11.%{?rel_tag}%{?dist}
+Release:        12.%{?rel_tag}%{?dist}
 Summary:        CLI tool to download flash video from websites
 Group:          Applications/Communications
                 # License breakdown in README.fedora
@@ -16,30 +16,88 @@ Source0:        get-flash-videos-%{rel_tag}.tar.gz
 Source1:        README.fedora
 BuildArch:      noarch
 
+# Build
+BuildRequires:  coreutils
+BuildRequires:  findutils
+BuildRequires:  make
+BuildRequires:  perl
+BuildRequires:  perl-generators
 BuildRequires:  perl(ExtUtils::MakeMaker)
+# Modules
+BuildRequires:  perl(Carp)
 BuildRequires:  perl(Compress::Zlib)
+BuildRequires:  perl(constant)
+BuildRequires:  perl(Crypt::Blowfish_PP)
 BuildRequires:  perl(Crypt::Rijndael)
-BuildRequires:  perl(XML::Parser::PerlSAX)
-BuildRequires:  perl(Module::Find)
-BuildRequires:  perl(LWP::UserAgent::Determined)
+BuildRequires:  perl(Data::AMF::Packet)
+BuildRequires:  perl(Data::Dumper)
+BuildRequires:  perl(DBI)
+BuildRequires:  perl(Digest::MD5)
+BuildRequires:  perl(Digest::SHA)
+BuildRequires:  perl(Encode)
+BuildRequires:  perl(Exporter)
+BuildRequires:  perl(Fcntl)
+BuildRequires:  perl(File::Basename)
+BuildRequires:  perl(File::Copy)
+BuildRequires:  perl(File::Path)
+BuildRequires:  perl(File::Spec)
+BuildRequires:  perl(File::stat)
+BuildRequires:  perl(File::Temp)
+BuildRequires:  perl(HTML::Entities)
+BuildRequires:  perl(HTML::TokeParser)
+BuildRequires:  perl(HTML::Tree)
+BuildRequires:  perl(integer)
+BuildRequires:  perl(IPC::Open3)
+BuildRequires:  perl(List::Util)
 BuildRequires:  perl(LWP::Protocol::https)
-Buildrequires:  perl(Test::Simple)
-BuildRequires:  perl(Tie::IxHash)
+BuildRequires:  perl(LWP::Simple)
+BuildRequires:  perl(Memoize)
+BuildRequires:  perl(MIME::Base64)
+BuildRequires:  perl(Module::Find)
+BuildRequires:  perl(Net::Netrc)
+BuildRequires:  perl(POSIX)
+BuildRequires:  perl(Storable)
+BuildRequires:  perl(strict)
+BuildRequires:  perl(Symbol)
+BuildRequires:  perl(Term::ReadKey)
+BuildRequires:  perl(Time::HiRes)
+BuildRequires:  perl(Time::localtime)
 BuildRequires:  perl(URI)
+BuildRequires:  perl(URI::Escape)
+BuildRequires:  perl(URI::Find)
+BuildRequires:  perl(URI::QueryParam)
+BuildRequires:  perl(warnings)
 BuildRequires:  perl(WWW::Mechanize)
+BuildRequires:  perl(WWW::Mechanize::Link)
 BuildRequires:  perl(XML::Simple)
-
+# Scripts
+BuildRequires:  perl(Cwd)
+BuildRequires:  perl(Getopt::Long)
+BuildRequires:  perl(Text::Wrap)
+# Tests
+BuildRequires:  perl(lib)
+BuildRequires:  perl(Test::More)
+BuildRequires:  perl(Tie::IxHash)
+BuildRequires:  perl(utf8)
+# Dependencies
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 Requires:       perl(Compress::Zlib)
 Requires:       perl(Crypt::Rijndael)
-Requires:       perl(Data::AMF)
-Requires:       perl(Module::Find)
-Requires:       perl(LWP::Protocol::https)
-Requires:       perl(LWP::UserAgent::Determined)
-Requires:       perl(Tie::IxHash)
+Requires:       perl(Cwd)
+Requires:       perl(Data::AMF::Packet)
+Requires:       perl(Digest::MD5)
+Requires:       perl(Digest::SHA)
+Requires:       perl(File::Copy)
+Requires:       perl(File::Path)
+Requires:       perl(File::Spec)
+Requires:       perl(Net::Netrc)
+Requires:       perl(Term::ReadKey)
+Requires:       perl(URI::Find)
 Requires:       perl(XML::Simple)
 Requires:       rtmpdump
-
+Recommends:     perl(DBI)
+Recommends:     perl(LWP::Simple)
+Recommends:     perl(Memoize)
 
 %{?perl_default_filter}
 
@@ -66,7 +124,6 @@ rm t/google_video_search.t
 make pure_install DESTDIR=$RPM_BUILD_ROOT
 cp -a utils/ff-get-flash-video $RPM_BUILD_ROOT%{_bindir}
 find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} ';'
-find $RPM_BUILD_ROOT -depth -type d -exec rmdir {} 2>/dev/null ';'
 %{_fixperms} $RPM_BUILD_ROOT/*
 
 
@@ -75,7 +132,8 @@ make test
 
 
 %files
-%doc README README.fedora LICENSE
+%license LICENSE README.fedora
+%doc README
 %{perl_vendorlib}/*
 %{_bindir}/get_flash_videos
 %{_bindir}/ff-get-flash-video
@@ -83,6 +141,11 @@ make test
 
 
 %changelog
+* Fri Oct 21 2016 Paul Howarth <paul@city-fan.org> - 1.24-12.20131203git2d46d08
+- Specify all dependencies
+- Don't need to remove empty directories from the buildroot
+- Use %%license
+
 * Fri Dec 27 2013 leamas@nowhere.net - 1.24-11.20131203git2d46d08
 - Rebuild after F20 branching
 
@@ -122,5 +185,5 @@ make test
 * Sun Feb 05 2012 Alec Leamas <alec@nowhere.com> 1.24-2.20120205git8abc6c6
 - Moving to latest git
 
-* Sat Jan 31 2012 Alec Leamas <alec@nowhere.com>             1.24-1
+* Tue Jan 31 2012 Alec Leamas <alec@nowhere.com>             1.24-1
 - Intial packaging
