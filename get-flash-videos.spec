@@ -1,18 +1,17 @@
-%global         rel_tag  20131203git2d46d08
 Name:           get-flash-videos
-Version:        1.24
-Release:        13.%{?rel_tag}%{?dist}
+Version:        1.25.92
+Release:        1%{?dist}
 Summary:        CLI tool to download flash video from websites
 Group:          Applications/Communications
                 # License breakdown in README.fedora
 License:        ASL 2.0 and GPLv3+
-URL:            http://code.google.com/p/get-flash-videos/
+URL:            https://github.com/monsieurvideo/get-flash-videos
 # rel_tag=20120714git162d964;
 # srcdir=get-flash-videos
 # git clone git://github.com/monsieurvideo/get-flash-videos.git $srcdir
 # cd $srcdir;  git reset --hard ${rel_tag##*git}; cd ..
 # tar czf $srcdir-$rel_tag.tar.gz --exclude .git $srcdir
-Source0:        get-flash-videos-%{rel_tag}.tar.gz
+Source0:        https://github.com/monsieurvideo/get-flash-videos/archive/%{version}/get-flash-videos-%{version}.tar.gz
 Source1:        README.fedora
 BuildArch:      noarch
 
@@ -109,7 +108,7 @@ insist on a newer version of the player.
 
 
 %prep
-%setup -q -n get-flash-videos
+%setup -q
 cp %{SOURCE1} .
 
 
@@ -141,6 +140,9 @@ make test
 
 
 %changelog
+* Sun Jun 18 2017 Sérgio Basto <sergio@serjux.com> - 1.25.92-1
+- Update to get-flash-videos-1.25.92
+
 * Sun Mar 19 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org>
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
