@@ -132,7 +132,7 @@ make test
 
 %files
 %license LICENSE README.fedora
-%doc README
+%doc README.md
 %{perl_vendorlib}/*
 %{_bindir}/get_flash_videos
 %{_bindir}/ff-get-flash-video
