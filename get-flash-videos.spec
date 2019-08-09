@@ -1,6 +1,6 @@
 Name:           get-flash-videos
 Version:        1.25.94
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        CLI tool to download flash video from websites
 Group:          Applications/Communications
                 # License breakdown in README.fedora
@@ -140,6 +140,9 @@ make test
 
 
 %changelog
+* Fri Aug 09 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.25.94-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
 * Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.25.94-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
